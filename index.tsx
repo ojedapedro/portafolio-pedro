@@ -607,7 +607,7 @@ const App = () => {
               <ContactButton href="mailto:contacto@ejemplo.com" className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 Enviar Email
               </ContactButton>
-              <ContactButton href="https://wa.me/1234567890" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
+              <ContactButton href="https://wa.me/584144415403" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 <span className="flex items-center justify-center gap-2">
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp
                 </span>
