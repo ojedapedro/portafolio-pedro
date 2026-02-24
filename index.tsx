@@ -422,7 +422,7 @@ const App = () => {
                   { label: "Historial Académico del Alumno", tooltip: "Registro permanente de calificaciones acumuladas año tras año para un seguimiento educativo a largo plazo." }
                 ]}
                 stack={["React", "Node.js", "PDFKit", "PostgreSQL"]}
-                ctaLink="#"
+                ctaLink="https://educontrol-pro-m159.vercel.app/?demo=true"
                 ctaText="Ver Funcionalidades"
               />
             </Reveal>
