@@ -190,6 +190,8 @@ const ProductCard = ({
         </div>
         <a 
           href={ctaLink} 
+          target={ctaLink.startsWith('http') ? '_blank' : '_self'}
+          rel={ctaLink.startsWith('http') ? 'noopener noreferrer' : undefined}
           className={`group flex items-center justify-center w-full py-3 px-6 rounded-lg text-white font-semibold transition-all ${colorClass} hover:opacity-90`}
         >
           {ctaText}
@@ -363,7 +365,7 @@ const App = () => {
                   { label: "Caja y Facturación sincronizada", tooltip: "Integración total entre la recepción de pagos físicos/digitales y el sistema contable, eliminando el doble ingreso de datos." }
                 ]}
                 stack={["React", "Node.js", "Stripe API", "Cloud SQL"]}
-                ctaLink="#"
+                ctaLink="https://sistema-de-gesti-n-escolar-v1.vercel.app/?demo=true"
                 ctaText="Ver Demo Interactiva"
               />
             </Reveal>
@@ -607,7 +609,7 @@ const App = () => {
               <ContactButton href="mailto:analistadedatosnova@gmail.com" className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 Enviar Email
               </ContactButton>
-              <ContactButton href="https://wa.me/584144415403" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
+              <ContactButton href="https://wa.me/1234567890" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 <span className="flex items-center justify-center gap-2">
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp
                 </span>
