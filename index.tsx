@@ -625,8 +625,12 @@ const Home = () => {
                 </span>
               </ContactButton>
             </div>
-            <div className="mt-16 pt-8 border-t border-slate-800 text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.
+            <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+              <div>&copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.</div>
+              <div className="flex items-center gap-3" title="Tráfico total de clientes">
+                <span className="font-medium">Tráfico de clientes:</span>
+                <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -714,8 +718,12 @@ const Explore = () => {
       
       {/* Simple Footer for Explore Page */}
       <footer className="bg-slate-900 text-white py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-          &copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+          <div>&copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.</div>
+          <div className="flex items-center gap-3" title="Tráfico total de clientes">
+            <span className="font-medium">Tráfico de clientes:</span>
+            <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
+          </div>
         </div>
       </footer>
     </div>
