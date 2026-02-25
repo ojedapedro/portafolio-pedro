@@ -349,6 +349,119 @@ const productsData = [
   }
 ];
 
+const ContactForm = () => {
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+
+  const validateEmail = (val: string) => {
+    if (!val) return 'El email es requerido';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'Formato de email inválido';
+    return '';
+  };
+
+  const validatePhone = (val: string) => {
+    if (!val) return 'El teléfono es requerido';
+    if (!/^\+?[\d\s-]{8,}$/.test(val)) return 'Formato de teléfono inválido (mínimo 8 dígitos)';
+    return '';
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (emailError) setEmailError(validateEmail(e.target.value));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+    if (phoneError) setPhoneError(validatePhone(e.target.value));
+  };
+
+  const handleEmailSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const eErr = validateEmail(email);
+    const pErr = validatePhone(phone);
+    
+    if (eErr || pErr) {
+      if (eErr) setEmailError(eErr);
+      if (pErr) setPhoneError(pErr);
+      return;
+    }
+    
+    window.location.href = `mailto:analistadedatosnova@gmail.com?subject=Contacto desde Portafolio&body=${encodeURIComponent(`Email: ${email}\nTeléfono: ${phone}\n\nMensaje:\n${message}`)}`;
+  };
+
+  const handleWhatsAppSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const eErr = validateEmail(email);
+    const pErr = validatePhone(phone);
+    
+    if (eErr || pErr) {
+      if (eErr) setEmailError(eErr);
+      if (pErr) setPhoneError(pErr);
+      return;
+    }
+    
+    window.open(`https://wa.me/584144415403?text=${encodeURIComponent(`Hola, mi email es ${email} y mi teléfono ${phone}. \n\nMensaje: ${message}`)}`, '_blank');
+  };
+
+  return (
+    <form className="max-w-xl mx-auto text-left bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-700 mb-8">
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-slate-300 mb-1">Tu Email</label>
+        <input 
+          type="email" 
+          value={email}
+          onChange={handleEmailChange}
+          onBlur={() => setEmailError(validateEmail(email))}
+          className={`w-full px-4 py-3 rounded-lg bg-slate-900 border ${emailError ? 'border-red-500' : 'border-slate-700'} text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          placeholder="ejemplo@correo.com"
+        />
+        {emailError && <p className="text-red-400 text-xs mt-1">{emailError}</p>}
+      </div>
+      
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-slate-300 mb-1">Tu Teléfono (WhatsApp)</label>
+        <input 
+          type="tel" 
+          value={phone}
+          onChange={handlePhoneChange}
+          onBlur={() => setPhoneError(validatePhone(phone))}
+          className={`w-full px-4 py-3 rounded-lg bg-slate-900 border ${phoneError ? 'border-red-500' : 'border-slate-700'} text-white focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          placeholder="+1 234 567 8900"
+        />
+        {phoneError && <p className="text-red-400 text-xs mt-1">{phoneError}</p>}
+      </div>
+
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-slate-300 mb-1">Mensaje (Opcional)</label>
+        <textarea 
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 resize-none"
+          placeholder="¿En qué puedo ayudarte?"
+        ></textarea>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-4">
+        <button 
+          onClick={handleEmailSubmit}
+          className="flex-1 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-bold transition-colors text-center flex justify-center items-center"
+        >
+          Enviar Email
+        </button>
+        <button 
+          onClick={handleWhatsAppSubmit}
+          className="flex-1 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-bold transition-colors text-center flex justify-center items-center gap-2"
+        >
+          <WhatsAppIcon className="w-5 h-5" /> WhatsApp
+        </button>
+      </div>
+    </form>
+  );
+};
+
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -607,15 +720,10 @@ const Home = () => {
             <p className="text-slate-400 mb-8 max-w-xl mx-auto">
               Si estás interesado en adquirir alguno de mis productos o necesitas una solución a medida, envíame un mensaje. Respondo en menos de 24 horas.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
-              <ContactButton href="mailto:analistadedatosnova@gmail.com" className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition-colors">
-                Enviar Email
-              </ContactButton>
-              <ContactButton href="https://wa.me/1234567890" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
-                <span className="flex items-center justify-center gap-2">
-                  <WhatsAppIcon className="w-5 h-5" /> WhatsApp
-                </span>
-              </ContactButton>
+            
+            <ContactForm />
+
+            <div className="flex justify-center">
               <ContactButton href="https://instagram.com/analistadedatosnova" className="bg-pink-600 hover:bg-pink-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 <span className="flex items-center justify-center gap-2">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
