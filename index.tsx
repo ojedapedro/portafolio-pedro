@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 // Simple Icon Components
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -285,7 +286,70 @@ const AccordionItem = ({ question, answer }: { question: string, answer: string 
   );
 };
 
-const App = () => {
+const productsData = [
+  {
+    title: "AdminPro",
+    category: "EdTech / Fintech",
+    colorClass: "bg-indigo-600",
+    problem: "Los colegios pierden hasta un 20% de ingresos por gestión manual de pagos y falta de transparencia financiera.",
+    solution: "Un gestor administrativo integral con Oficina Virtual para padres. Automatiza la conciliación de pagos digitales y ofrece reportes financieros en tiempo real.",
+    metrics: [
+      { label: "Control de pagos y morosidad", tooltip: "Sistema automatizado que rastrea fechas de vencimiento, calcula recargos y notifica a los padres sobre pagos pendientes." },
+      { label: "Oficina Virtual para Padres 24/7", tooltip: "Portal web seguro donde los representantes pueden consultar estados de cuenta, descargar facturas y ver el rendimiento académico." },
+      { label: "Caja y Facturación sincronizada", tooltip: "Integración total entre la recepción de pagos físicos/digitales y el sistema contable, eliminando el doble ingreso de datos." }
+    ],
+    stack: ["React", "Node.js", "Stripe API", "Cloud SQL"],
+    ctaLink: "https://sistema-de-gesti-n-escolar-v1.vercel.app/?demo=true",
+    ctaText: "Ver Demo Interactiva"
+  },
+  {
+    title: "Ojecars",
+    category: "Automotive SaaS",
+    colorClass: "bg-orange-600",
+    problem: "Los talleres mecánicos sufren fugas de dinero en inventario y pierden la confianza del cliente por falta de informes claros.",
+    solution: "Gestión 360° para talleres: desde la recepción del vehículo con historial clínico, hasta el control de inventario, nómina de mecánicos y gestión de abonos.",
+    metrics: [
+      { label: "Historial Técnico Digital", tooltip: "Base de datos centralizada de cada vehículo atendido, facilitando diagnósticos basados en reparaciones previas." },
+      { label: "Control de Inventario y Compras", tooltip: "Gestión en tiempo real de repuestos, con alertas de stock mínimo y sugerencias inteligentes de reabastecimiento." },
+      { label: "Gestión de Nómina y Comisiones", tooltip: "Cálculo automático de pagos a mecánicos basado en mano de obra realizada y comisiones por venta de repuestos." }
+    ],
+    stack: ["Vue.js", "Firebase", "PWA Support"],
+    ctaLink: "#",
+    ctaText: "Comprar Licencia / Plantilla"
+  },
+  {
+    title: "SitemVentas",
+    category: "Retail ERP",
+    colorClass: "bg-emerald-600",
+    problem: "Los ERPs tradicionales son demasiado costosos y rígidos para PyMEs, dificultando el control de garantías y ventas.",
+    solution: "Un gestor administrativo ligero y modular. Controla inventarios, ventas, compras y garantías en una interfaz adaptable a cualquier nicho de retail.",
+    metrics: [
+      { label: "Gestión de Garantías y RMA", tooltip: "Módulo especializado para el seguimiento de devoluciones, reparaciones y cambios de productos bajo garantía." },
+      { label: "Reportes de Ventas Predictivos", tooltip: "Análisis de datos históricos para proyectar ventas futuras y optimizar la planificación de inventario." },
+      { label: "Adaptable a cualquier divisa", tooltip: "Soporte multi-moneda que permite operar con tasas de cambio actualizadas para facturación y reportes." }
+    ],
+    stack: ["Next.js", "PostgreSQL", "Tailwind"],
+    ctaLink: "#",
+    ctaText: "Consultar Adaptación"
+  },
+  {
+    title: "EduControl",
+    category: "EdTech / Academic",
+    colorClass: "bg-purple-600",
+    problem: "El cierre de lapsos académicos suele ser caótico: profesores calculando promedios manualmente y administrativos imprimiendo boletines uno por uno.",
+    solution: "Plataforma integral de control de notas. Centraliza las calificaciones, calcula promedios automáticamente y genera boletines por grados y secciones al instante.",
+    metrics: [
+      { label: "Generación Masiva de Boletines", tooltip: "Motor de generación de PDFs que crea cientos de boletines académicos con un solo clic, listos para imprimir o enviar." },
+      { label: "Organización por Grado y Sección", tooltip: "Estructura jerárquica flexible que se adapta al organigrama de la institución (Preescolar, Primaria, Secundaria)." },
+      { label: "Historial Académico del Alumno", tooltip: "Registro permanente de calificaciones acumuladas año tras año para un seguimiento educativo a largo plazo." }
+    ],
+    stack: ["React", "Node.js", "PDFKit", "PostgreSQL"],
+    ctaLink: "https://educontrol-pro-m159.vercel.app/?demo=true",
+    ctaText: "Ver Funcionalidades"
+  }
+];
+
+const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -293,11 +357,13 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
             <div className="flex-shrink-0 flex items-center">
-              <img 
-                src="https://i.ibb.co/dJcLzy62/Captura-de-pantalla-2026-01-20-170241.png" 
-                alt="DevSolutions Logo" 
-                className="h-20 w-auto object-contain transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer" 
-              />
+              <Link to="/">
+                <img 
+                  src="https://i.ibb.co/dJcLzy62/Captura-de-pantalla-2026-01-20-170241.png" 
+                  alt="DevSolutions Logo" 
+                  className="h-20 w-auto object-contain transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer" 
+                />
+              </Link>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#proyectos" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Proyectos</a>
@@ -306,9 +372,9 @@ const App = () => {
               <a href="#contacto" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Contacto</a>
             </div>
             <div className="hidden md:flex">
-              <a href="#proyectos" className="px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition-colors">
+              <Link to="/explore" className="px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition-colors">
                 Ver Portfolio
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -328,9 +394,9 @@ const App = () => {
             Dejo atrás la complejidad técnica para entregarte <strong>resultados de negocio</strong>. Especialista en transformar operaciones manuales de Colegios, Talleres y PyMEs en activos digitales automatizados y escalables.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#proyectos" className="px-8 py-4 rounded-lg bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
+            <Link to="/explore" className="px-8 py-4 rounded-lg bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30">
               Explorar mis Productos
-            </a>
+            </Link>
             <a href="#servicios" className="px-8 py-4 rounded-lg bg-white text-slate-700 border border-slate-200 font-bold text-lg hover:bg-slate-50 transition-colors">
               Cómo puedo ayudarte
             </a>
@@ -351,81 +417,17 @@ const App = () => {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project 1: AdminPro */}
-            <Reveal delay={0} className="h-full">
-              <ProductCard
-                title="AdminPro"
-                category="EdTech / Fintech"
-                colorClass="bg-indigo-600"
-                problem="Los colegios pierden hasta un 20% de ingresos por gestión manual de pagos y falta de transparencia financiera."
-                solution="Un gestor administrativo integral con Oficina Virtual para padres. Automatiza la conciliación de pagos digitales y ofrece reportes financieros en tiempo real."
-                metrics={[
-                  { label: "Control de pagos y morosidad", tooltip: "Sistema automatizado que rastrea fechas de vencimiento, calcula recargos y notifica a los padres sobre pagos pendientes." },
-                  { label: "Oficina Virtual para Padres 24/7", tooltip: "Portal web seguro donde los representantes pueden consultar estados de cuenta, descargar facturas y ver el rendimiento académico." },
-                  { label: "Caja y Facturación sincronizada", tooltip: "Integración total entre la recepción de pagos físicos/digitales y el sistema contable, eliminando el doble ingreso de datos." }
-                ]}
-                stack={["React", "Node.js", "Stripe API", "Cloud SQL"]}
-                ctaLink="https://sistema-de-gesti-n-escolar-v1.vercel.app/?demo=true"
-                ctaText="Ver Demo Interactiva"
-              />
-            </Reveal>
+            {productsData.map((project, index) => (
+              <Reveal key={index} delay={index * 150} className="h-full">
+                <ProductCard {...project} />
+              </Reveal>
+            ))}
+          </div>
 
-            {/* Project 2: Ojecars */}
-            <Reveal delay={150} className="h-full">
-              <ProductCard
-                title="Ojecars"
-                category="Automotive SaaS"
-                colorClass="bg-orange-600"
-                problem="Los talleres mecánicos sufren fugas de dinero en inventario y pierden la confianza del cliente por falta de informes claros."
-                solution="Gestión 360° para talleres: desde la recepción del vehículo con historial clínico, hasta el control de inventario, nómina de mecánicos y gestión de abonos."
-                metrics={[
-                  { label: "Historial Técnico Digital", tooltip: "Base de datos centralizada de cada vehículo atendido, facilitando diagnósticos basados en reparaciones previas." },
-                  { label: "Control de Inventario y Compras", tooltip: "Gestión en tiempo real de repuestos, con alertas de stock mínimo y sugerencias inteligentes de reabastecimiento." },
-                  { label: "Gestión de Nómina y Comisiones", tooltip: "Cálculo automático de pagos a mecánicos basado en mano de obra realizada y comisiones por venta de repuestos." }
-                ]}
-                stack={["Vue.js", "Firebase", "PWA Support"]}
-                ctaLink="https://gonzacars-sistem.vercel.app/?demo=true"
-                ctaText="Comprar Licencia / Plantilla"
-              />
-            </Reveal>
-
-            {/* Project 3: SitemVentas */}
-            <Reveal delay={300} className="h-full">
-              <ProductCard
-                title="SitemVentas"
-                category="Retail ERP"
-                colorClass="bg-emerald-600"
-                problem="Los ERPs tradicionales son demasiado costosos y rígidos para PyMEs, dificultando el control de garantías y ventas."
-                solution="Un gestor administrativo ligero y modular. Controla inventarios, ventas, compras y garantías en una interfaz adaptable a cualquier nicho de retail."
-                metrics={[
-                  { label: "Gestión de Garantías y RMA", tooltip: "Módulo especializado para el seguimiento de devoluciones, reparaciones y cambios de productos bajo garantía." },
-                  { label: "Reportes de Ventas Predictivos", tooltip: "Análisis de datos históricos para proyectar ventas futuras y optimizar la planificación de inventario." },
-                  { label: "Adaptable a cualquier divisa", tooltip: "Soporte multi-moneda que permite operar con tasas de cambio actualizadas para facturación y reportes." }
-                ]}
-                stack={["Next.js", "PostgreSQL", "Tailwind"]}
-                ctaLink="#"
-                ctaText="Consultar Adaptación"
-              />
-            </Reveal>
-            
-            {/* Project 4: EduControl - NEW */}
-            <Reveal delay={450} className="h-full">
-              <ProductCard
-                title="EduControl"
-                category="EdTech / Academic"
-                colorClass="bg-purple-600"
-                problem="El cierre de lapsos académicos suele ser caótico: profesores calculando promedios manualmente y administrativos imprimiendo boletines uno por uno."
-                solution="Plataforma integral de control de notas. Centraliza las calificaciones, calcula promedios automáticamente y genera boletines por grados y secciones al instante."
-                metrics={[
-                  { label: "Generación Masiva de Boletines", tooltip: "Motor de generación de PDFs que crea cientos de boletines académicos con un solo clic, listos para imprimir o enviar." },
-                  { label: "Organización por Grado y Sección", tooltip: "Estructura jerárquica flexible que se adapta al organigrama de la institución (Preescolar, Primaria, Secundaria)." },
-                  { label: "Historial Académico del Alumno", tooltip: "Registro permanente de calificaciones acumuladas año tras año para un seguimiento educativo a largo plazo." }
-                ]}
-                stack={["React", "Node.js", "PDFKit", "PostgreSQL"]}
-                ctaLink="https://educontrol-pro-m159.vercel.app/?demo=true"
-                ctaText="Ver Funcionalidades"
-              />
-            </Reveal>
+          <div className="mt-12 text-center">
+             <Link to="/explore" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition-colors">
+                Ver todos los productos <ArrowRightIcon className="w-4 h-4 ml-2" />
+             </Link>
           </div>
         </div>
       </section>
@@ -609,7 +611,7 @@ const App = () => {
               <ContactButton href="mailto:analistadedatosnova@gmail.com" className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 Enviar Email
               </ContactButton>
-              <ContactButton href="https://wa.me/584144415403" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
+              <ContactButton href="https://wa.me/1234567890" className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-lg font-bold transition-colors">
                 <span className="flex items-center justify-center gap-2">
                   <WhatsAppIcon className="w-5 h-5" /> WhatsApp
                 </span>
@@ -625,6 +627,104 @@ const App = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+const Explore = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = productsData.filter(product => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.stack.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  return (
+    <div className="min-h-screen flex flex-col bg-slate-50">
+      <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-24">
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/">
+                <img 
+                  src="https://i.ibb.co/dJcLzy62/Captura-de-pantalla-2026-01-20-170241.png" 
+                  alt="DevSolutions Logo" 
+                  className="h-20 w-auto object-contain transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer" 
+                />
+              </Link>
+            </div>
+            <div className="hidden md:flex">
+              <Link to="/" className="text-slate-600 hover:text-blue-600 font-medium transition-colors flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Volver al Inicio
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="pt-32 pb-20 px-4 max-w-7xl mx-auto w-full flex-1">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Explorar Productos</h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Encuentra la solución perfecta para tu negocio. Busca por nombre, categoría o tecnología.
+          </p>
+        </div>
+
+        <div className="max-w-2xl mx-auto mb-12 relative">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            className="block w-full pl-11 pr-4 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
+            placeholder="Buscar productos..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((project, index) => (
+              <Reveal key={index} delay={index * 100} className="h-full">
+                <ProductCard {...project} />
+              </Reveal>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <svg className="mx-auto h-12 w-12 text-slate-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 className="text-lg font-medium text-slate-900">No se encontraron productos</h3>
+            <p className="mt-1 text-slate-500">Intenta con otros términos de búsqueda.</p>
+          </div>
+        )}
+      </div>
+      
+      {/* Simple Footer for Explore Page */}
+      <footer className="bg-slate-900 text-white py-8 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+          &copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
