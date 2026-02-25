@@ -477,9 +477,9 @@ const Home = () => {
                 <div className="p-6 bg-blue-600 rounded-xl flex flex-col justify-center items-center text-center text-white h-full">
                   <h3 className="text-xl font-bold mb-2">¿Listo para empezar?</h3>
                   <p className="text-blue-100 text-sm mb-4">Lleva tu negocio al siguiente nivel.</p>
-                  <button className="bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors">
+                  <a href="#contacto" className="bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors">
                     Contactar Ahora
-                  </button>
+                  </a>
                 </div>
               </Reveal>
             </div>
