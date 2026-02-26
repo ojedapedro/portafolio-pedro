@@ -830,7 +830,7 @@ const Explore = () => {
           <div>&copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.</div>
           <div className="flex items-center gap-3" title="Tráfico total de clientes">
             <span className="font-medium">Tráfico de clientes:</span>
-            <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
+            <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-4 opacity-80 hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </footer>
