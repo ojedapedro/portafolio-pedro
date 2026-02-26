@@ -314,7 +314,7 @@ const productsData = [
       { label: "Gestión de Nómina y Comisiones", tooltip: "Cálculo automático de pagos a mecánicos basado en mano de obra realizada y comisiones por venta de repuestos." }
     ],
     stack: ["Vue.js", "Firebase", "PWA Support"],
-    ctaLink: "#",
+    ctaLink: "https://gonzacars-sistem.vercel.app/?demo=true",
     ctaText: "Comprar Licencia / Plantilla"
   },
   {
