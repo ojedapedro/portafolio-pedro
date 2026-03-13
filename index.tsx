@@ -314,7 +314,7 @@ const productsData = [
       { label: "Gestión de Nómina y Comisiones", tooltip: "Cálculo automático de pagos a mecánicos basado en mano de obra realizada y comisiones por venta de repuestos." }
     ],
     stack: ["Vue.js", "Firebase", "PWA Support"],
-    ctaLink: "https://gonzacars-sistem.vercel.app/?demo=true",
+    ctaLink: "#",
     ctaText: "Comprar Licencia / Plantilla"
   },
   {
@@ -346,6 +346,21 @@ const productsData = [
     stack: ["React", "Node.js", "PDFKit", "PostgreSQL"],
     ctaLink: "https://educontrol-pro-m159.vercel.app/?demo=true",
     ctaText: "Ver Funcionalidades"
+  },
+  {
+    title: "FiscalCtl",
+    category: "GovTech / Fiscal",
+    colorClass: "bg-blue-800",
+    problem: "La gestión de impuestos y nómina suele ser un proceso manual propenso a errores legales y multas costosas por incumplimiento.",
+    solution: "Sistema centralizado para el control de impuestos nacionales/municipales, nómina y servicios públicos con indicadores de gestión en tiempo real.",
+    metrics: [
+      { label: "Control de Impuestos 360°", tooltip: "Gestión y seguimiento de obligaciones tributarias nacionales y municipales para evitar sanciones y recargos." },
+      { label: "Nómina y Pasivos Laborales", tooltip: "Cálculo automatizado de sueldos, vacaciones, utilidades y prestaciones sociales según la ley vigente." },
+      { label: "Indicadores de Gestión Gráficos", tooltip: "Visualización dinámica de datos fiscales y operativos para una toma de decisiones basada en métricas reales." }
+    ],
+    stack: ["React", "Node.js", "D3.js", "PostgreSQL"],
+    ctaLink: "https://fiscal-control-pro-v1-1.vercel.app/?demo=true",
+    ctaText: "Ver Demo Fiscal"
   }
 ];
 
@@ -403,7 +418,7 @@ const ContactForm = () => {
       return;
     }
     
-    window.open(`https://wa.me/584144415403?text=${encodeURIComponent(`Hola, mi email es ${email} y mi teléfono ${phone}. \n\nMensaje: ${message}`)}`, '_blank');
+    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(`Hola, mi email es ${email} y mi teléfono ${phone}. \n\nMensaje: ${message}`)}`, '_blank');
   };
 
   return (
@@ -830,7 +845,7 @@ const Explore = () => {
           <div>&copy; {new Date().getFullYear()} DevSolutions. Todos los derechos reservados.</div>
           <div className="flex items-center gap-3" title="Tráfico total de clientes">
             <span className="font-medium">Tráfico de clientes:</span>
-            <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-4 opacity-80 hover:opacity-100 transition-opacity" />
+            <img src="https://api.visitorbadge.io/api/visitors?path=devsolutions.analistadedatosnova&label=VISITAS&countColor=%232563eb" alt="Contador de visitas" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </footer>
