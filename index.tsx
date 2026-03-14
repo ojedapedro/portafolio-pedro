@@ -418,7 +418,7 @@ const ContactForm = () => {
       return;
     }
     
-    window.open(`https://wa.me/4144415403?text=${encodeURIComponent(`Hola, mi email es ${email} y mi teléfono ${phone}. \n\nMensaje: ${message}`)}`, '_blank');
+    window.open(`https://wa.me/584144415403?text=${encodeURIComponent(`Hola, mi email es ${email} y mi teléfono ${phone}. \n\nMensaje: ${message}`)}`, '_blank');
   };
 
   return (
