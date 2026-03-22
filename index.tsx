@@ -366,8 +366,8 @@ const productsData = [
     title: "Kulinaria ERP",
     category: "Restaurant Management",
     colorClass: "bg-blue-800",
-    problem: "La gestión de impuestos y nómina suele ser un proceso manual propenso a errores legales y multas costosas por incumplimiento.",
-    solution: "Sistema centralizado para el control de impuestos nacionales/municipales, nómina y servicios públicos con indicadores de gestión en tiempo real.",
+    problem: "El control de costos en restaurantes es un desafío: desde el costeo de platos hasta la gestión de inventarios, todo suele hacerse manualmente, lo que genera pérdidas significativas.",
+    solution: "ERP especializado para restaurantes que automatiza el control de inventarios, el costeo de platos y productos, y ofrece indicadores de gestión en tiempo real para maximizar la rentabilidad.",
     metrics: [
       { label: "Control de Inventarios", tooltip: "Gestión y seguimiento de productos y materiales." },
       { label: "Costeo de Platos y Productos", tooltip: "Cálculo preciso de los costos asociados a cada plato y producto." },
