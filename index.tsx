@@ -361,6 +361,21 @@ const productsData = [
     stack: ["React", "Node.js", "D3.js", "PostgreSQL"],
     ctaLink: "https://fiscal-control-pro-v1-1.vercel.app/?demo=true",
     ctaText: "Ver Demo Fiscal"
+  },
+  {
+    title: "Kulinaria ERP",
+    category: "Restaurant Management",
+    colorClass: "bg-blue-800",
+    problem: "La gestión de impuestos y nómina suele ser un proceso manual propenso a errores legales y multas costosas por incumplimiento.",
+    solution: "Sistema centralizado para el control de impuestos nacionales/municipales, nómina y servicios públicos con indicadores de gestión en tiempo real.",
+    metrics: [
+      { label: "Control de Inventarios", tooltip: "Gestión y seguimiento de productos y materiales." },
+      { label: "Costeo de Platos y Productos", tooltip: "Cálculo preciso de los costos asociados a cada plato y producto." },
+      { label: "Indicadores de Gestión Gráficos de Control ", tooltip: "Visualización dinámica de datos de control para una toma de decisiones basada en métricas reales." }
+    ],
+    stack: ["React", "Node.js", "D3.js", "PostgreSQL"],
+    ctaLink: "https://kulinaria-demo.vercel.app",
+    ctaText: "Ver Demo Kulinaria"
   }
 ];
 
