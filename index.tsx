@@ -373,7 +373,7 @@ const productsData = [
       { label: "Costeo de Platos y Productos", tooltip: "Cálculo preciso de los costos asociados a cada plato y producto." },
       { label: "Indicadores de Gestión Gráficos de Control ", tooltip: "Visualización dinámica de datos de control para una toma de decisiones basada en métricas reales." }
     ],
-    stack: ["React", "Node.js", "D3.js", "PostgreSQL"],
+    stack: ["React", "Node.js", "Figma", "PostgreSQL"],
     ctaLink: "https://kulinaria-demo.vercel.app",
     ctaText: "Ver Demo Kulinaria"
   }
