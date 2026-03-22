@@ -365,7 +365,7 @@ const productsData = [
   {
     title: "Kulinaria ERP",
     category: "Restaurant Management",
-    colorClass: "bg-blue-800",
+    colorClass: "bg-orange-800",
     problem: "El control de costos en restaurantes es un desafío: desde el costeo de platos hasta la gestión de inventarios, todo suele hacerse manualmente, lo que genera pérdidas significativas.",
     solution: "ERP especializado para restaurantes que automatiza el control de inventarios, el costeo de platos y productos, y ofrece indicadores de gestión en tiempo real para maximizar la rentabilidad.",
     metrics: [
